@@ -1,6 +1,6 @@
 (function () {
     'user strict';
 
-    angular.module('app', ['app.libraries']);
+    angular.module('app', ['app.libraries', 'app.components']);
 
 }());
