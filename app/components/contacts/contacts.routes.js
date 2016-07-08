@@ -18,7 +18,7 @@
             })
             .state('contacts.detail', {
                 url: '/:id',
-                controller: 'ContactController',
+                controller: 'ContactDetailController',
                /* controllerProvider: function ($state) {
                     return `Contacts${$state.name}Controller`
                 },*/
