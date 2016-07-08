@@ -3,23 +3,24 @@
 
     class ContactsController {
 
-        constructor($scope, $timeout, ContactsService){
+        constructor(ContactsService, $state){
 
             this.ContactsService = ContactsService;
+            this.$state = $state;
 
-            ContactsService.getContacts().then(({data}) => console.log(data));
+            ContactsService.getContacts().then(({data}) => {
+                this.contacts = data;
+            });
 
         }
 
-        /*getRepos(){
-
-            this.PerfilService.getReposs().then(({data}) => this.repos = data);
-
-        }*/
+        detail(contact) {
+            this.$state.go('contacts.detail', {id: contact.id, contact});
+        }
 
     }
 
-    ContactsController.$inject = ['$scope', '$timeout', 'ContactsService'];
+    ContactsController.$inject = ['ContactsService', '$state'];
 
     angular.module('app.components.contacts').controller('ContactsController', ContactsController);
 
