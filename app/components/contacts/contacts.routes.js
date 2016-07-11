@@ -16,6 +16,12 @@
                 controllerAs: 'ctrl',
                 templateUrl: 'components/contacts/contacts.html'
             })
+            .state('contacts.create', {
+                url: '/create',
+                controller: 'ContactFormController',
+                controllerAs: 'ctrlForm',
+                templateUrl: 'components/contacts/components/contact-form/contact-form.html'
+            })
             .state('contacts.detail', {
                 url: '/:id',
                 controller: 'ContactDetailController',

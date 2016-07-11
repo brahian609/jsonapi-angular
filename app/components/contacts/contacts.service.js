@@ -8,6 +8,27 @@
             this.$http = $http;
         }
 
+        addContact(data) {
+
+            return this.$q((resolve, reject) => {
+
+                this.$http({
+                    url: `http://localhost:3000/contacts`,
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: data
+                }).then(({data}) => {
+                    resolve(data);
+                }, (reason)=> {
+                    reject(reason);
+                });
+
+            });
+
+        }
+
         getContacts() {
             return this.$q((resolve, reject) => {
 
