@@ -19,11 +19,15 @@
             this.$state.go('contacts.detail', {id: contact.id, contact});
         }
 
-        modalPhone() {
+        modalPhone(index) {
 
             var modalInstance = this.$uibModal.open({
-                templateUrl: 'myModalContent.html',
-                //controller: 'ModalInstanceCtrl',
+                templateUrl: 'components/contacts/components/contact-detail/modal-phone.html',
+                controller: 'ModalPhoneController',
+                controllerAs: '$ctrl',
+                resolve: {
+                    urlPhones: () => this.contacts[index].relationships['phone-numbers'].links.related
+                }
             });
 
         }

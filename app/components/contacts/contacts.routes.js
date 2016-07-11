@@ -26,7 +26,7 @@
                     contact: null
                 },
                 controllerAs: 'ctrlDetail',
-                templateUrl: 'components/contacts/components/contact-detail/contact.html',
+                templateUrl: 'components/contacts/components/contact-detail/contact-detail.html',
                 resolve: {
                     contact: ['$q', 'ContactsService', '$stateParams', ($q, ContactsService, $stateParams) => {
 
