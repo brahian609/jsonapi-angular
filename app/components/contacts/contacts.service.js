@@ -39,6 +39,22 @@
             });
         }
 
+        getPhones(url) {
+
+            return this.$q((resolve, reject) => {
+
+                this.$http({
+                    url: url,
+                    method: 'GET'
+                }).then(({data}) => {
+                    resolve(data);
+                }, (reason)=> {
+                    reject(reason);
+                });
+
+            });
+        }
+
     }
 
     ContactsService.$inject = ['$q', '$http'];

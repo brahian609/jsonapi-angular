@@ -3,9 +3,17 @@
 
     class ModalPhoneController {
 
-        constructor($scope, $uibModalInstance, urlPhones) {
+        constructor(ContactsService, $uibModalInstance, urlPhones) {
 
             this.$uibModalInstance = $uibModalInstance;
+
+            ContactsService.getPhones(urlPhones).then(({data}) => {
+                this.phones = data;
+            }).catch(reason => {
+                console.log('reason');
+                console.log(reason);
+            });
+
             console.log('urlPhones');
             console.log(urlPhones);
 
@@ -21,7 +29,7 @@
 
     }
 
-    ModalPhoneController.$inject = ['$scope', '$uibModalInstance', 'urlPhones'];
+    ModalPhoneController.$inject = ['ContactsService', '$uibModalInstance', 'urlPhones'];
 
     angular.module('app.components.contacts').controller('ModalPhoneController', ModalPhoneController);
 

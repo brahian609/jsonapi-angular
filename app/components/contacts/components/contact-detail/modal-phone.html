@@ -3,6 +3,23 @@
 </div>
 <div class="modal-body">
 
+    <div class="panel panel-default"
+         ng-repeat="phone in $ctrl.phones track by $index">
+        <div class="panel-heading">
+            <h4>Detalles</h4>
+        </div>
+        <div class="panel-body">
+            <address>
+                <strong ng-bind="phone.attributes.name"></strong><br>
+                <abbr title="Teléfono">Tel:</abbr>
+                <span ng-bind="phone.attributes['phone-number']"></span>
+            </address>
+        </div>
+    </div>
+
+    <!--<pre>
+        {{ $ctrl.phones | json }}
+    </pre>-->
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">Aceptar</button>
