@@ -35,6 +35,10 @@
                             uib-tooltip="Teléfonos"
                             class="btn btn-default btn-xs glyphicon glyphicon-earphone">
                     </button>
+                    <button ng-click="ctrl.deleteContact(contact.links.self)"
+                            uib-tooltip="Eliminar"
+                            class="btn btn-default btn-xs glyphicon glyphicon-trash">
+                    </button>
                 </td>
             </tr>
         </tbody>

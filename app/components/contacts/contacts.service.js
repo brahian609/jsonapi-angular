@@ -31,6 +31,27 @@
 
         }
 
+        delContact(url) {
+
+            return this.$q((resolve, reject) => {
+
+                this.$http({
+                    method: 'DELETE',
+                    url: url,
+                    headers: {
+                        'Accept': 'application/vnd.api+json',
+                        'Content-Type': 'application/vnd.api+json'
+                    }
+                }).then(({data}) => {
+                    resolve(data);
+                }, (reason)=> {
+                    reject(reason);
+                });
+
+            });
+
+        }
+
         getContacts() {
             return this.$q((resolve, reject) => {
 
