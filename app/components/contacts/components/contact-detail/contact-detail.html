@@ -1,10 +1,43 @@
-<div>
+<div class="row col-md-12">
 
-    <h1>Contacto</h1>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Información del Contacto</h4>
+            </div>
+            <div class="panel-body">
+                <address>
+                    <strong ng-bind="ctrlDetail.name"></strong><br>
+                    <abbr title="Email">Email:</abbr>
+                    <span ng-bind="ctrlDetail.email"></span>
+                </address>
+            </div>
+        </div>
+    </div>
 
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Teléfonos de Contacto</h4>
+            </div>
+            <div class="panel-body">
 
-    <!--<pre>
-        {{ctrl.contacts | json}}
-    </pre>-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <input ng-model="search" class="form-control" placeholder="Buscar">
+                    </div>
+                </div>
+
+                <div class="clear">&nbsp;</div>
+
+                <address ng-repeat="phone in ctrlDetail.phones | filter: search track by $index">
+                    <strong ng-bind="phone.attributes.name"></strong><br>
+                    <abbr title="Teléfono">Tel:</abbr>
+                    <span ng-bind="phone.attributes['phone-number']"></span>
+                </address>
+            </div>
+        </div>
+    </div>
+
 
 </div>

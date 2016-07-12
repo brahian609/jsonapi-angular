@@ -36,15 +36,17 @@
                 resolve: {
                     contact: ['$q', 'ContactsService', '$stateParams', ($q, ContactsService, $stateParams) => {
 
-                        let link = $stateParams.contact.links.self;
+                        let link = `${$stateParams.contact.links.self}?include=phone-numbers`;
 
                         return $q((resolve, reject) => {
-                            ContactsService.getDetail(link).then(({data}) => {
+
+                            ContactsService.getDetail(link).then(data => {
                                 resolve(data);
                             }).catch(reason => {
                                 console.log('reason');
                                 console.log(reason);
                             });
+
                         });
 
                     }]
