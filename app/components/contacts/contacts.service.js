@@ -13,11 +13,13 @@
             return this.$q((resolve, reject) => {
 
                 this.$http({
-                    url: `http://localhost:3000/contacts`,
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Accept': 'application/vnd.api+json',
+                        'Content-Type': 'application/vnd.api+json'
                     },
+                    url: `http://localhost:3000/contacts`,
+                    //data: JSON.stringify(data)
                     data: data
                 }).then(({data}) => {
                     resolve(data);

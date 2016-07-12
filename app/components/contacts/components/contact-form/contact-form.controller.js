@@ -3,10 +3,10 @@
 
     class ContactFormController {
 
-        constructor(ContactsService) {
+        constructor(ContactsService, JsonApiDataStore) {
 
             this.ContactsService = ContactsService;
-            this.attributes = {}
+            this.attributes = {};
 
         }
 
@@ -19,13 +19,17 @@
             };*/
 
             var dataContact = {
-                "type": "contacts",
-                "attributes": {
-                    "name-first": "John1",
-                    "name-last": "Doe1",
-                    "email": "john1.doe@boring.test"
-                }
+                //"data": {
+                    "type": "contacts",
+                    "attributes": {
+                        "name-first": "John1",
+                        "name-last": "Doe1",
+                        "email": "john1.doe@boring.test"
+                    }
+                //}
             };
+
+            //var dataContact = '{"data":{"type":"contacts", "attributes":{"name-first":"John1", "name-last":"Doe1", "email":"john1.doe@boring.test"}}}';
 
             this.ContactsService.addContact(dataContact).then(({data}) => {
                 console.log('data');
@@ -39,7 +43,7 @@
 
     }
 
-    ContactFormController.$inject = ['ContactsService'];
+    ContactFormController.$inject = ['ContactsService', 'JsonApiDataStore'];
 
     angular.module('app.components.contacts').controller('ContactFormController', ContactFormController);
 
