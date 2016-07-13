@@ -28,6 +28,25 @@ class ContactsService {
 
     }
 
+    addPhone(data) {
+
+        return this.$q((resolve, reject) => {
+
+            this.$http({
+                method: 'POST',
+                headers: this.headers,
+                url: `http://localhost:3000/phone-numbers`,
+                data: data
+            }).then(({data}) => {
+                resolve(data);
+            }, (reason)=> {
+                reject(reason);
+            });
+
+        });
+
+    }
+
     delContact(url) {
 
         return this.$q((resolve, reject) => {

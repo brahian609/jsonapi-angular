@@ -7,8 +7,6 @@ class ContactsController {
         this.$uibModal = $uibModal;
 
         ContactsService.getContacts().then(({data}) => {
-            console.log('contacts');
-            console.log(data);
             this.contacts = data;
         });
 
