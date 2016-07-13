@@ -6,8 +6,24 @@
 
     <div class="row">
         <div class="col-md-12">
-            <input ng-model="search" class="form-control" placeholder="Buscar">
+            <div class="col-md-9">
+                <input ng-model="search" class="form-control" placeholder="Buscar">
+            </div>
+            <div class="col-md-3">
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-click="$ctrl.isCollapsed = !$ctrl.isCollapsed">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    Agregar
+                </button>
+            </div>
         </div>
+    </div>
+
+    <div class="clear">&nbsp;</div>
+
+    <div uib-collapse="$ctrl.isCollapsed">
+        <phones-form></phones-form>
     </div>
 
     <div class="clear">&nbsp;</div>
@@ -26,11 +42,7 @@
         </div>
     </div>
 
-    <!--<pre>
-        {{ $ctrl.phones | json }}
-    </pre>-->
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">Aceptar</button>
     <button class="btn btn-default" type="button" ng-click="$ctrl.cancel()">Cerrar</button>
 </div>

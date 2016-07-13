@@ -3,6 +3,7 @@ class ContactDetailController {
     constructor(ContactsService, contact) {
 
         this.contact = contact;
+        this.isCollapsed = true;
 
         console.log('contact');
         console.log(contact);

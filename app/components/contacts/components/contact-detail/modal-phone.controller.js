@@ -3,6 +3,7 @@ class ModalPhoneController {
     constructor(ContactsService, $uibModalInstance, urlPhones) {
 
         this.$uibModalInstance = $uibModalInstance;
+        this.isCollapsed = true;
 
         ContactsService.getPhones(urlPhones).then(({data}) => {
             this.phones = data;
@@ -16,13 +17,10 @@ class ModalPhoneController {
 
     }
 
-    ok() {
+    cancel() {
         this.$uibModalInstance.close();
     }
 
-    cancel() {
-        this.$uibModalInstance.dismiss('cancel');
-    }
 
 }
 

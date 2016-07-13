@@ -10,7 +10,8 @@ let config = {
     },
     module: {
         loaders:  [
-            {test: /\.js$/, exclude: /node_modules/, loader: 'babel'}
+            {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
+            {test: /\.html$/, exclude: /node_modules/, loader: 'raw'}
         ]
     }
 
