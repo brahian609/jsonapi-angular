@@ -1,36 +1,31 @@
-(function () {
-    'user strict';
+class ModalPhoneController {
 
-    class ModalPhoneController {
+    constructor(ContactsService, $uibModalInstance, urlPhones) {
 
-        constructor(ContactsService, $uibModalInstance, urlPhones) {
+        this.$uibModalInstance = $uibModalInstance;
 
-            this.$uibModalInstance = $uibModalInstance;
+        ContactsService.getPhones(urlPhones).then(({data}) => {
+            this.phones = data;
+        }).catch(reason => {
+            console.log('reason');
+            console.log(reason);
+        });
 
-            ContactsService.getPhones(urlPhones).then(({data}) => {
-                this.phones = data;
-            }).catch(reason => {
-                console.log('reason');
-                console.log(reason);
-            });
-
-            console.log('urlPhones');
-            console.log(urlPhones);
-
-        }
-
-        ok() {
-            this.$uibModalInstance.close();
-        }
-
-        cancel() {
-            this.$uibModalInstance.dismiss('cancel');
-        }
+        console.log('urlPhones');
+        console.log(urlPhones);
 
     }
 
-    ModalPhoneController.$inject = ['ContactsService', '$uibModalInstance', 'urlPhones'];
+    ok() {
+        this.$uibModalInstance.close();
+    }
 
-    angular.module('app.components.contacts').controller('ModalPhoneController', ModalPhoneController);
+    cancel() {
+        this.$uibModalInstance.dismiss('cancel');
+    }
 
-}());
+}
+
+ModalPhoneController.$inject = ['ContactsService', '$uibModalInstance', 'urlPhones'];
+
+export default ModalPhoneController

@@ -1,108 +1,103 @@
-(function () {
-    'user strict';
+class ContactsService {
 
-    class ContactsService {
+    constructor($q, $http) {
+        this.$q = $q;
+        this.$http = $http;
+        this.headers = {
+            'Accept': 'application/vnd.api+json',
+            'Content-Type': 'application/vnd.api+json'
+        };
+    }
 
-        constructor($q, $http){
-            this.$q = $q;
-            this.$http = $http;
-            this.headers = {
-                'Accept': 'application/vnd.api+json',
-                'Content-Type': 'application/vnd.api+json'
-            };
-        }
+    addContact(data) {
 
-        addContact(data) {
+        return this.$q((resolve, reject) => {
 
-            return this.$q((resolve, reject) => {
-
-                this.$http({
-                    method: 'POST',
-                    headers: this.headers,
-                    url: `http://localhost:3000/contacts`,
-                    data: data
-                }).then(({data}) => {
-                    resolve(data);
-                }, (reason)=> {
-                    reject(reason);
-                });
-
+            this.$http({
+                method: 'POST',
+                headers: this.headers,
+                url: `http://localhost:3000/contacts`,
+                data: data
+            }).then(({data}) => {
+                resolve(data);
+            }, (reason)=> {
+                reject(reason);
             });
 
-        }
-
-        delContact(url) {
-
-            return this.$q((resolve, reject) => {
-
-                this.$http({
-                    method: 'DELETE',
-                    url: url,
-                    headers: this.headers
-                }).then(({data}) => {
-                    resolve(data);
-                }, (reason)=> {
-                    reject(reason);
-                });
-
-            });
-
-        }
-
-        getContacts() {
-            return this.$q((resolve, reject) => {
-
-                this.$http({
-                    url: `http://localhost:3000/contacts`,
-                    method: 'GET',
-                    headers: this.headers
-                }).then(({data}) => {
-                    resolve(data);
-                }, (reason)=> {
-                    reject(reason);
-                });
-
-            });
-        }
-
-        getDetail(url) {
-
-            return this.$q((resolve, reject) => {
-
-                this.$http({
-                    url: url,
-                    method: 'GET',
-                    headers: this.headers
-                }).then(({data}) => {
-                    resolve(data);
-                }, (reason)=> {
-                    reject(reason);
-                });
-
-            });
-        }
-
-        getPhones(url) {
-
-            return this.$q((resolve, reject) => {
-
-                this.$http({
-                    url: url,
-                    method: 'GET',
-                    headers: this.headers
-                }).then(({data}) => {
-                    resolve(data);
-                }, (reason)=> {
-                    reject(reason);
-                });
-
-            });
-        }
+        });
 
     }
 
-    ContactsService.$inject = ['$q', '$http'];
+    delContact(url) {
 
-    angular.module('app.components.contacts').service('ContactsService',ContactsService);
+        return this.$q((resolve, reject) => {
 
-}());
+            this.$http({
+                method: 'DELETE',
+                url: url,
+                headers: this.headers
+            }).then(({data}) => {
+                resolve(data);
+            }, (reason)=> {
+                reject(reason);
+            });
+
+        });
+
+    }
+
+    getContacts() {
+        return this.$q((resolve, reject) => {
+
+            this.$http({
+                url: `http://localhost:3000/contacts`,
+                method: 'GET',
+                headers: this.headers
+            }).then(({data}) => {
+                resolve(data);
+            }, (reason)=> {
+                reject(reason);
+            });
+
+        });
+    }
+
+    getDetail(url) {
+
+        return this.$q((resolve, reject) => {
+
+            this.$http({
+                url: url,
+                method: 'GET',
+                headers: this.headers
+            }).then(({data}) => {
+                resolve(data);
+            }, (reason)=> {
+                reject(reason);
+            });
+
+        });
+    }
+
+    getPhones(url) {
+
+        return this.$q((resolve, reject) => {
+
+            this.$http({
+                url: url,
+                method: 'GET',
+                headers: this.headers
+            }).then(({data}) => {
+                resolve(data);
+            }, (reason)=> {
+                reject(reason);
+            });
+
+        });
+    }
+
+}
+
+ContactsService.$inject = ['$q', '$http'];
+
+export default ContactsService

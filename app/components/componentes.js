@@ -1,6 +1,8 @@
-(function () {
-    'user strict';
+import contacts from './contacts/contacts.js';
 
-    angular.module('app.components', ['app.components.contacts']);
+let componentsModule = angular.module('app.components', [
+    contacts.name
+]);
 
-}());
+export default componentsModule;
+

@@ -1,13 +1,19 @@
+'use strict';
+
 let config = {
     entry: {
-        app: './app/app.module.js'
+        app: './app/app.js'
     },
     output:{
         path: __dirname + '/build',
         filename: 'bundle.js'
     },
-    modules: [
-        {test: /\.js$/, exclude: /node_modules/, loader: 'babel'}
-    ]
+    module: {
+        loaders:  [
+            {test: /\.js$/, exclude: /node_modules/, loader: 'babel'}
+        ]
+    }
 
 };
+
+module.exports = config;

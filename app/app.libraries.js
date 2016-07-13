@@ -1,6 +1,10 @@
-(function () {
-    'user strict';
+import angular    from 'angular';
+import uiRouter   from 'angular-ui-router';
+import uiBoostrap from 'angular-ui-bootstrap';
 
-    angular.module('app.libraries', ['ui.router', 'ui.bootstrap', 'beauby.jsonApiDataStore']);
+let librariesModules = angular.module('app.libraries', [
+    uiRouter,
+    uiBoostrap
+]);
 
-}());
+export default librariesModules;
