@@ -19,7 +19,6 @@
                         'Content-Type': 'application/vnd.api+json'
                     },
                     url: `http://localhost:3000/contacts`,
-                    //data: JSON.stringify(data)
                     data: data
                 }).then(({data}) => {
                     resolve(data);

@@ -3,9 +3,10 @@
 
     class ContactFormController {
 
-        constructor(ContactsService, JsonApiDataStore) {
+        constructor(ContactsService, JsonApiDataStore, $state) {
 
             this.ContactsService = ContactsService;
+            this.$state = $state;
             this.attributes = {};
 
         }
@@ -13,27 +14,17 @@
         create() {
             console.log('create contact');
 
-           /* var dataContact = {
-                type: 'contacts',
-                attributes: this.attributes
-            };*/
-
-            var dataContact = {
-                //"data": {
-                    "type": "contacts",
-                    "attributes": {
-                        "name-first": "John1",
-                        "name-last": "Doe1",
-                        "email": "john1.doe@boring.test"
-                    }
-                //}
+           var dataContact = {
+               data: {
+                   type: 'contacts',
+                   attributes: this.attributes
+               }
             };
-
-            //var dataContact = '{"data":{"type":"contacts", "attributes":{"name-first":"John1", "name-last":"Doe1", "email":"john1.doe@boring.test"}}}';
 
             this.ContactsService.addContact(dataContact).then(({data}) => {
                 console.log('data');
                 console.log(data);
+                this.$state.go('contacts.detail', {id: data.id, contact: data});
             }).catch(reason => {
                 console.log('reason');
                 console.log(reason);
@@ -43,7 +34,7 @@
 
     }
 
-    ContactFormController.$inject = ['ContactsService', 'JsonApiDataStore'];
+    ContactFormController.$inject = ['ContactsService', 'JsonApiDataStore', '$state'];
 
     angular.module('app.components.contacts').controller('ContactFormController', ContactFormController);
 

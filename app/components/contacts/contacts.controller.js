@@ -10,13 +10,15 @@
             this.$uibModal = $uibModal;
 
             ContactsService.getContacts().then(({data}) => {
+                console.log('contacts');
+                console.log(data);
                 this.contacts = data;
             });
 
         }
 
         detail(contact) {
-            this.$state.go('contacts.detail', {id: contact.id, contact});
+            this.$state.go('contacts.detail', {id: contact.id, contact}, {reload: true});
         }
 
         deleteContact(url) {
@@ -24,9 +26,8 @@
             console.log('url');
             console.log(url);
 
-            this.ContactsService.delContact(url).then(({data}) => {
-                console.log('data');
-                console.log(data);
+            this.ContactsService.delContact(url).then(() => {
+               this.$state.reload();
             }).catch(reason => {
                 console.log('reason');
                 console.log(reason);
