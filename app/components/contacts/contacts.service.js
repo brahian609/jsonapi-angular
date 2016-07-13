@@ -6,6 +6,10 @@
         constructor($q, $http){
             this.$q = $q;
             this.$http = $http;
+            this.headers = {
+                'Accept': 'application/vnd.api+json',
+                'Content-Type': 'application/vnd.api+json'
+            };
         }
 
         addContact(data) {
@@ -14,10 +18,7 @@
 
                 this.$http({
                     method: 'POST',
-                    headers: {
-                        'Accept': 'application/vnd.api+json',
-                        'Content-Type': 'application/vnd.api+json'
-                    },
+                    headers: this.headers,
                     url: `http://localhost:3000/contacts`,
                     data: data
                 }).then(({data}) => {
@@ -37,10 +38,7 @@
                 this.$http({
                     method: 'DELETE',
                     url: url,
-                    headers: {
-                        'Accept': 'application/vnd.api+json',
-                        'Content-Type': 'application/vnd.api+json'
-                    }
+                    headers: this.headers
                 }).then(({data}) => {
                     resolve(data);
                 }, (reason)=> {
@@ -56,7 +54,8 @@
 
                 this.$http({
                     url: `http://localhost:3000/contacts`,
-                    method: 'GET'
+                    method: 'GET',
+                    headers: this.headers
                 }).then(({data}) => {
                     resolve(data);
                 }, (reason)=> {
@@ -72,7 +71,8 @@
 
                 this.$http({
                     url: url,
-                    method: 'GET'
+                    method: 'GET',
+                    headers: this.headers
                 }).then(({data}) => {
                     resolve(data);
                 }, (reason)=> {
@@ -88,7 +88,8 @@
 
                 this.$http({
                     url: url,
-                    method: 'GET'
+                    method: 'GET',
+                    headers: this.headers
                 }).then(({data}) => {
                     resolve(data);
                 }, (reason)=> {
