@@ -4,14 +4,11 @@ class ContactDetailController {
 
         this.contact = contact;
         this.isCollapsed = true;
-
-        console.log('contact');
-        console.log(contact);
+        this.id = contact.data.id;
 
         this.name = `${contact.data.attributes['name-first']} ${contact.data.attributes['name-last']}`;
         this.email = contact.data.attributes.email;
         this.phones = contact.included;
-
 
     }
 
