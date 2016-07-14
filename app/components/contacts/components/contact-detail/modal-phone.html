@@ -23,7 +23,9 @@
 <div class="clear">&nbsp;</div>
 
 <div uib-collapse="$ctrl.isCollapsed">
-    <phones-form id="$ctrl.id"></phones-form>
+    <phones-form contact="$ctrl.contact"
+                 phone="$ctrl.phone">
+    </phones-form>
 </div>
 
 <div class="clear">&nbsp;</div>
@@ -53,12 +55,15 @@
                         uib-dropdown-menu role="menu"
                         aria-labelledby="single-button">
                         <li>
-                            <a class="glyphicon glyphicon-edit" href="#">
+                            <a class="glyphicon glyphicon-edit"
+                               href="javascript:void(0)"
+                               ng-click="$ctrl.prepareUpdate($index)">
                                 Modificar
                             </a>
                         </li>
                         <li>
                             <a class="glyphicon glyphicon-trash"
+                               href="javascript:void(0)"
                                ng-click="$ctrl.delete(phone.id)">
                                 Eliminar
                             </a>

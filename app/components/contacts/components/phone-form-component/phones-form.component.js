@@ -5,7 +5,8 @@ let phonesFormComponent = {
     template,
     controller,
     bindings: {
-        id: '<'
+        contact: '<',
+        phone: '<'
     }
 };
 

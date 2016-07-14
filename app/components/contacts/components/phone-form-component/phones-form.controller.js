@@ -1,10 +1,20 @@
 class PhonesFormController {
 
-    constructor(ContactsService, $state) {
+    constructor(ContactsService, $state, $scope) {
 
         this.ContactsService = ContactsService;
         this.$state = $state;
         this.attributes = {};
+        this.id = this.contact.id;
+        this.createForm = true;
+
+        $scope.$watch(() => {
+            if(this.phone.attributes != undefined){
+                this.attributes.name = this.phone.attributes.name;
+                this.attributes['phone-number'] = this.phone.attributes['phone-number'];
+                this.createForm = false;
+            }
+        });
 
     }
 
@@ -36,8 +46,17 @@ class PhonesFormController {
 
     }
 
+    update() {
+
+        console.log("update phone");
+
+        console.log('this.phone');
+        console.log(this.phone);
+
+    }
+
 }
 
-PhonesFormController.$inject = ['ContactsService', '$state'];
+PhonesFormController.$inject = ['ContactsService', '$state', '$scope'];
 
 export default PhonesFormController

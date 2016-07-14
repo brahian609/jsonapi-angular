@@ -36,13 +36,12 @@ class ContactsController {
 
     modalPhone(index) {
 
-        var modalInstance = this.$uibModal.open({
+        this.$uibModal.open({
             templateUrl: 'components/contacts/components/contact-detail/modal-phone.html',
             controller: 'ModalPhoneController',
             controllerAs: '$ctrl',
             resolve: {
-                links: () => this.contacts[index].relationships['phone-numbers'].links,
-                id: () => this.contacts[index].id
+                contact: () => this.contacts[index]
             }
         });
 

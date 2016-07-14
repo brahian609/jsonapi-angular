@@ -1,29 +1,43 @@
 class ModalPhoneController {
 
-    constructor(ContactsService, $uibModalInstance, links, id) {
+    constructor(ContactsService, $uibModalInstance, contact) {
 
         this.ContactsService = ContactsService;
         this.$uibModalInstance = $uibModalInstance;
-        this.links = links;
+        this.contact = contact;
+        this.linkRelated = contact.relationships['phone-numbers'].links.related;
+        this.linkSelf = contact.relationships['phone-numbers'].links.self;
         this.isCollapsed = true;
-        this.id = id;
+        this.phone = {};
 
-        ContactsService.getPhones(links.related).then(({data}) => {
+        ContactsService.getPhones(this.linkRelated).then(({data}) => {
             this.phones = data;
         }).catch(reason => {
             console.log('reason');
             console.log(reason);
         });
 
-        console.log('links');
-        console.log(links);
+        console.log('contact');
+        console.log(contact);
+
+    }
+
+    prepareUpdate(index) {
+
+        console.log("update phone");
+        this.isCollapsed = false;
+
+        console.log('this.phones[index]');
+        console.log(this.phones[index]);
+
+        this.phone = this.phones[index];
 
     }
 
     delete(id) {
 
         var config = {
-            url: this.links.self
+            url: this.linkSelf
         },
             data = {
                 data: [{
@@ -49,6 +63,6 @@ class ModalPhoneController {
 
 }
 
-ModalPhoneController.$inject = ['ContactsService', '$uibModalInstance', 'links', 'id'];
+ModalPhoneController.$inject = ['ContactsService', '$uibModalInstance', 'contact'];
 
 export default ModalPhoneController

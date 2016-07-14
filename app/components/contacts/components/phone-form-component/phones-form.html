@@ -19,7 +19,7 @@
                            ng-model="$ctrl.attributes['phone-number']">
                 </div>
             </div>
-            <button ng-click="$ctrl.create()"
+            <button ng-click="($ctrl.createForm == true) ? $ctrl.create() : $ctrl.update()"
                     class="btn btn-primary">
                 <i class="glyphicon glyphicon-floppy-disk"></i>
                 Guardar
