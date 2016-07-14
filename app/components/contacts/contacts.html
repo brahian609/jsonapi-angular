@@ -2,7 +2,7 @@
 
     <h1>Contactos</h1>
 
-    <button ui-sref="contacts.create" class="btn btn-primary">
+    <button ui-sref="contacts.form" class="btn btn-primary">
         <i class="glyphicon glyphicon-plus"></i>
         Agregar
     </button>
@@ -30,6 +30,10 @@
                     <button ng-click="ctrl.detail(contact)"
                             uib-tooltip="Ver Detalles"
                             class="btn btn-default btn-xs glyphicon glyphicon-eye-open">
+                    </button>
+                    <button ng-click="ctrl.updateContact(contact)"
+                            uib-tooltip="Modificar"
+                            class="btn btn-default btn-xs glyphicon glyphicon-edit">
                     </button>
                     <button ng-click="ctrl.modalPhone($index)"
                             uib-tooltip="Teléfonos"

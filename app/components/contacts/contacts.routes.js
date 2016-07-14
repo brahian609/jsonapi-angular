@@ -11,11 +11,14 @@ function contactsRoutes($stateProvider, $urlRouterProvider) {
             controllerAs: 'ctrl',
             templateUrl: 'components/contacts/contacts.html'
         })
-        .state('contacts.create', {
-            url: '/create',
+        .state('contacts.form', {
+            url: '/form',
             controller: 'ContactFormController',
             controllerAs: 'ctrlForm',
-            templateUrl: 'components/contacts/components/contact-form/contact-form.html'
+            templateUrl: 'components/contacts/components/contact-form/contact-form.html',
+            params: {
+                data: null
+            }
         })
         .state('contacts.detail', {
             url: '/:id',

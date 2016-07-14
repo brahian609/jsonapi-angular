@@ -26,7 +26,10 @@
                        class="form-control"
                        ng-model="ctrlForm.attributes.email">
             </div>
-            <button ng-click="ctrlForm.create()" class="btn btn-primary">Guardar</button>
+            <button ng-click="(ctrlForm.createForm == true) ? ctrlForm.createRow() : ctrlForm.updateRow()" class="btn btn-primary">
+                <i class="glyphicon glyphicon-floppy-disk"></i>
+                 Guardar
+            </button>
         </div>
 
 

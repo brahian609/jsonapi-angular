@@ -16,6 +16,10 @@ class ContactsController {
         this.$state.go('contacts.detail', {id: contact.id, contact}, {reload: true});
     }
 
+    updateContact(contact) {
+        this.$state.go('contacts.form', {data: contact}, {reload: true});
+    }
+
     deleteContact(url) {
 
         console.log('url');
