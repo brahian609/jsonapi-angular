@@ -1,9 +1,10 @@
 class ModalPhoneController {
 
-    constructor(ContactsService, $uibModalInstance, urlPhones) {
+    constructor(ContactsService, $uibModalInstance, urlPhones, id) {
 
         this.$uibModalInstance = $uibModalInstance;
         this.isCollapsed = true;
+        this.id = id;
 
         ContactsService.getPhones(urlPhones).then(({data}) => {
             this.phones = data;
@@ -24,6 +25,6 @@ class ModalPhoneController {
 
 }
 
-ModalPhoneController.$inject = ['ContactsService', '$uibModalInstance', 'urlPhones'];
+ModalPhoneController.$inject = ['ContactsService', '$uibModalInstance', 'urlPhones', 'id'];
 
 export default ModalPhoneController

@@ -37,7 +37,8 @@ class ContactsController {
             controller: 'ModalPhoneController',
             controllerAs: '$ctrl',
             resolve: {
-                urlPhones: () => this.contacts[index].relationships['phone-numbers'].links.related
+                urlPhones: () => this.contacts[index].relationships['phone-numbers'].links.related,
+                id: () => this.contacts[index].id
             }
         });
 

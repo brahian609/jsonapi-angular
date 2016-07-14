@@ -17,7 +17,7 @@ class PhonesFormController {
                     contact: {
                         data: {
                             type: "contacts",
-                            id: "1"
+                            id: this.id
                         }
                     }
                 },
