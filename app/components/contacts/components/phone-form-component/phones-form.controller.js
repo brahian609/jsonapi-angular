@@ -28,7 +28,7 @@ class PhonesFormController {
         this.ContactsService.addPhone(dataPhone).then(({data}) => {
             console.log('data');
             console.log(data);
-            //this.$state.go('contacts.detail', {id: data.id, contact: data});
+            this.$state.reload();
         }).catch(reason => {
             console.log('reason');
             console.log(reason);

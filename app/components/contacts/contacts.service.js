@@ -115,6 +115,46 @@ class ContactsService {
         });
     }
 
+    deleteRelations(config, data) {
+
+        console.log('data');
+        console.log(data);
+
+        return this.$q((resolve, reject) => {
+
+            this.$http({
+                method: 'DELETE',
+                url: config.url,
+                headers: this.headers,
+                data: data
+            }).then(({data}) => {
+                resolve(data);
+            }, (reason)=> {
+                reject(reason);
+            });
+
+        });
+
+    }
+
+    deleteRow(url) {
+
+        return this.$q((resolve, reject) => {
+
+            this.$http({
+                method: 'DELETE',
+                url: url,
+                headers: this.headers
+            }).then(({data}) => {
+                resolve(data);
+            }, (reason)=> {
+                reject(reason);
+            });
+
+        });
+
+    }
+
 }
 
 ContactsService.$inject = ['$q', '$http'];

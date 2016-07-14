@@ -34,7 +34,40 @@
     <div class="panel panel-default"
          ng-repeat="phone in $ctrl.phones | filter: search track by $index">
         <div class="panel-heading">
-            <h4>Detalles</h4>
+
+            <div class="row">
+
+                <h4 class="col-md-8">Detalles</h4>
+
+                <div class="btn-group col-md-2 pull-right"
+                     uib-dropdown is-open="false">
+                    <button type="button"
+                            class="btn btn-default btn-xs"
+                            uib-dropdown-toggle
+                            uib-tooltip="Acciones"
+                            ng-disabled="disabled">
+                        <i class="glyphicon glyphicon-cog"></i>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu"
+                        uib-dropdown-menu role="menu"
+                        aria-labelledby="single-button">
+                        <li>
+                            <a class="glyphicon glyphicon-edit" href="#">
+                                Modificar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="glyphicon glyphicon-trash"
+                               ng-click="$ctrl.delete(phone.id)">
+                                Eliminar
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
         </div>
         <div class="panel-body">
             <address>
