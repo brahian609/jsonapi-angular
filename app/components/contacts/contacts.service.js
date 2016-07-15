@@ -66,6 +66,25 @@ class ContactsService {
 
     }
 
+    updatePhone(config, data) {
+
+        return this.$q((resolve, reject) => {
+
+            this.$http({
+                method: 'PATCH',
+                headers: this.headers,
+                url: config.url,
+                data: data
+            }).then(({data}) => {
+                resolve(data);
+            }, (reason)=> {
+                reject(reason);
+            });
+
+        });
+
+    }
+
     delContact(url) {
 
         return this.$q((resolve, reject) => {

@@ -24,12 +24,7 @@ class ModalPhoneController {
 
     prepareUpdate(index) {
 
-        console.log("update phone");
         this.isCollapsed = false;
-
-        console.log('this.phones[index]');
-        console.log(this.phones[index]);
-
         this.phone = this.phones[index];
 
     }

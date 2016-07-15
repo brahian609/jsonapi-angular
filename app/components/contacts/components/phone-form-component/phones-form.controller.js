@@ -9,12 +9,16 @@ class PhonesFormController {
         this.createForm = true;
 
         $scope.$watch(() => {
-            if(this.phone.attributes != undefined){
-                this.attributes.name = this.phone.attributes.name;
-                this.attributes['phone-number'] = this.phone.attributes['phone-number'];
-                this.createForm = false;
+            if (this.phone.attributes != undefined) {
+                if (typeof this.attributes.name == 'undefined') {
+                    this.attributes.name = this.phone.attributes.name;
+                    this.attributes['phone-number'] = this.phone.attributes['phone-number'];
+                    this.createForm = false;
+                    this.phone_id = this.phone.id;
+                    this.url = this.contact.relationships['phone-numbers'].links.self;
+                }
             }
-        });
+        })
 
     }
 
@@ -50,8 +54,26 @@ class PhonesFormController {
 
         console.log("update phone");
 
-        console.log('this.phone');
-        console.log(this.phone);
+        var config = {
+            //url: this.url
+            url: `http://localhost:3000/phone-numbers/${this.phone_id}`
+        },
+            data = {
+                data: {
+                    id: this.phone_id,
+                    type: 'phone-numbers',
+                    attributes: this.attributes
+                }
+        };
+
+        this.ContactsService.updatePhone(config, data).then(({data}) => {
+            console.log('data');
+            console.log(data);
+            this.$state.reload();
+        }).catch(reason => {
+            console.log('reason');
+            console.log(reason);
+        })
 
     }
 
