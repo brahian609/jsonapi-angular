@@ -41,16 +41,64 @@
                 <div class="clear">&nbsp;</div>
 
                 <div uib-collapse="ctrlDetail.isCollapsed">
-                    <phones-form id="ctrlDetail.id"></phones-form>
+                    <phones-form contact="ctrlDetail.contact.data"
+                                 phone="ctrlDetail.phone">
+                    </phones-form>
                 </div>
 
                 <div class="clear">&nbsp;</div>
 
-                <address ng-repeat="phone in ctrlDetail.phones | filter: search track by $index">
-                    <strong ng-bind="phone.attributes.name"></strong><br>
-                    <abbr title="Teléfono">Tel:</abbr>
-                    <span ng-bind="phone.attributes['phone-number']"></span>
-                </address>
+                <div style="height: 600px; overflow: hidden; overflow-y: scroll">
+                    <div class="panel panel-default"
+                         ng-repeat="phone in ctrlDetail.phones | filter: search track by $index">
+                        <div class="panel-heading">
+
+                            <div class="row">
+
+                                <h4 class="col-md-8">Detalles</h4>
+
+                                <div class="btn-group col-md-2 pull-right"
+                                     uib-dropdown is-open="false">
+                                    <button type="button"
+                                            class="btn btn-default btn-xs"
+                                            uib-dropdown-toggle
+                                            uib-tooltip="Acciones"
+                                            ng-disabled="disabled">
+                                        <i class="glyphicon glyphicon-cog"></i>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu"
+                                        uib-dropdown-menu role="menu"
+                                        aria-labelledby="single-button">
+                                        <li>
+                                            <a class="glyphicon glyphicon-edit"
+                                               href="javascript:void(0)"
+                                               ng-click="ctrlDetail.prepareUpdate($index)">
+                                                Modificar
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="glyphicon glyphicon-trash"
+                                               href="javascript:void(0)"
+                                               ng-click="ctrlDetail.delete(phone.id)">
+                                                Eliminar
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="panel-body">
+                            <address>
+                                <strong ng-bind="phone.attributes.name"></strong><br>
+                                <abbr title="Teléfono">Tel:</abbr>
+                                <span ng-bind="phone.attributes['phone-number']"></span>
+                            </address>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

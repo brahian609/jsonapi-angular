@@ -24,6 +24,8 @@ class PhonesFormController {
 
     create() {
 
+        console.log("Create Phone");
+
         var dataPhone = {
             data: {
                 type: 'phone-numbers',
