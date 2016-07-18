@@ -27,20 +27,9 @@ class ContactFormController {
             data: {
                 type: 'contacts',
                 attributes: this.attributes
-            },
-            relationships: {
-                "phone-numbers": {
-                    data: [{
-                        type: "phone-numbers",
-                        id: "33",
-                        attributes: {
-                            name: "qwerty",
-                            "phone-number": "1111"
-                        }
-                    }]
-                }
             }
         };
+
 
         this.ContactsService.addContact(dataContact).then(({data}) => {
             console.log('data');
